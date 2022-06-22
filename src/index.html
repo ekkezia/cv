@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelloKOL</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js" integrity="sha512-n8IpKWzDnBOcBhRlHirMZOUvEq2bLRMuJGjuVqbzUJwtTsgwOgK5aS0c1JA647XWYfqvXve8k3PtZdzpipFjgg==" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="loading">
+        <h1>Loading...</h1>
+    </div>
+    <div id="iframeWrapper">
+        <iframe id='iframe' name='iframe' src="https://hellokol-erc1155.ekezia.repl.co/" scrolling="yes" frameborder="0">
+    </iframe>
+    </div>
+
+    <div id="canvasWrapper">
+        <canvas class="canvasGL"></canvas>
+    </div>
+
+    <div id="wrapper">
+        <div id="content">
+            <!-- WEBSITE COMPONENTS -->
+
+            <div class="scroll-left">
+                <p>&#10229 DESKTOP: KEY UP DOWN LEFT RIGHT&#10230</p>
+            </div>
+            <div class="scroll-right">
+                <p>&#10229 MOBILE: SWIPE UP DOWN LEFT RIGHT &#10230</p>
+            </div>
+
+
+            <!-- Page Content  -->
+
+            <div class="socials">
+                <div id="portfolio">
+                    BACK TO PORTFO
+                </div>
+            </div>
+
+            <!-- FILM OVERLAY -->
+            <div id="overlay"></div>
+            <div id="overlay-menu"></div>
+
+            <!-- POPUP MENU-->
+
+        </div>
+
+
+
+        <div class="footer">
+            <div class="left">
+                <p id="support"><a href="mailto:e.kezia@gmail.com">e.kezia@gmail.com</a></p>
+                <p id="copyright">© CV 2022 Elizabeth Kezia Widjaja.</p>
+                <p id="term"><a href="https://instagram.com/ekezia">@ekezia</a></p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
