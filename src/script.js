@@ -29,22 +29,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
 // LOADING
 jQuery(window).load(function () {
-    // document.getElementById('loading').style.display = "none";
-    document.getElementById('loading').classList.add('inactive');
-    document.getElementById('loading').classList.remove('active');
-    document.getElementById('loading').style.visibility = "hidden";
     document.getElementById('loading').style.display = "none";
-    document.getElementById('wrapper').classList.add('active');
-
 
     document.querySelector('canvas').classList.remove('inactive');
 
     document.querySelector('canvas').classList.add('active');
 
     document.querySelector('canvas').style.visibility = "visible";
+    document.getElementById('wrapper').style.display = "block";   
 
     setTimeout(function () {
-        console.log('page is loaded and 1 minute has passed');   
+        console.log('page is loaded and 1 minute has passed');
     }, 60000);
 
 });
@@ -258,7 +253,7 @@ function character() {
           // Camera Controller 
     document.addEventListener('keydown', control);
 
-    document.addEventListener('touchmove', controlMobile);
+    document.addEventListener('mousemove', controlMouse);
 
         function controlMobile(event) {
             event.preventDefault();
@@ -266,6 +261,14 @@ function character() {
             mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
             camera.position.x += mouse.x  * 0.2;
             camera.position.y -= mouse.y * 0.2 ;
+        }
+
+        function controlMouse(event) {
+            event.preventDefault();
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            camera.position.x += mouse.x * 0.1;
+            camera.position.y += mouse.y  * 0.1;
         }
         
             function control(e) {
