@@ -12,13 +12,18 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 
+let mobile;
 // Detect Mobile Device
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
     // true for mobile device
     console.log("mobile device");
+    mobile = true;
+    document.getElementById('instruction').innerHTML = "SWIPE LEFT RIGHT UP DOWN";
+    
   }else{
     // false for not mobile device
     console.log("not mobile device");
+    mobile = false;
   }
 
     // document.getElementById('loading').style.display = "visible";
@@ -116,7 +121,11 @@ function init() {
         img.position.z += (0);
         img.rotation.y = 1;
 
-        scene.add(img)
+        scene.add(img);
+        if(mobile){
+            img.position.x += (i * 5) - 8.5;
+            img.position.y = -1.5;
+        }
     }
 
     for (let i = 1; i <= 4; i++) {
@@ -130,7 +139,11 @@ function init() {
         img.position.z += 0;
         img.rotation.y = 0;
 
-        scene.add(img)
+        scene.add(img);
+        if(mobile){
+            img.position.x += (i * 5) - 8.5;
+            img.position.y = -6.5;
+        }
     }
 
     scene.traverse((object) => {
@@ -158,7 +171,9 @@ function init() {
     circle_tracker.position.x = -6
     circle_tracker.position.y = 3;
     // circle.rotate.x = Math.PI/2;
-    scene.add( circle_tracker );
+    if(!mobile){
+        scene.add( circle_tracker );
+    }
 
     //  firstBB = new THREE.Box3().setFromObject(circle);
      secondBB = new THREE.Box3().setFromObject(circle_tracker);
@@ -230,7 +245,9 @@ function character() {
 
             // animate()
             console.log('3d loaded');
-            scene.add(mod);
+            if(!mobile){
+                scene.add(mod);
+            }
         },
         // called while loading is progressing
         function(xhr) {
@@ -251,9 +268,38 @@ function character() {
         });
 
           // Camera Controller 
+          let lastX, lastY, currX, currY;
+
     document.addEventListener('keydown', control);
 
     document.addEventListener('mousemove', controlMouse);
+
+    window.addEventListener('touchstart', (e) => {
+        lastX = e.touches[0].clientX;
+        lastY = e.touches[0].clientY;
+    });
+    
+    window.addEventListener('touchmove', scrollMobile);
+    
+    function scrollMobile(e){
+        let scrollY = e.changedTouches[0].clientY;
+        let scrollX = e.changedTouches[0].clientX;
+
+        if(lastX < scrollX){
+            camera.position.x -= scrollX * 0.0001;
+        }
+        else if(lastX > scrollX){
+            camera.position.x += scrollX * 0.0001;
+
+        }
+
+        if(lastY < scrollY){
+            camera.position.y += scrollY  * 0.0001;
+        }
+        else if(lastY > scrollY){
+            camera.position.y -= scrollY  * 0.0001;
+        }
+    }
 
         function controlMobile(event) {
             event.preventDefault();
@@ -279,11 +325,10 @@ function character() {
                     circle_tracker.position.y += 0.5;
                     console.log('up'); 
                 } else if (e.key == 'ArrowDown') {
-                    camera.position.y -= 0.5;
-                    mod.rotation.y = 0;
-                    mod.position.y -= 0.5;
-                    circle_tracker.position.y -= 0.5;
-
+                        camera.position.y -= 0.5;
+                        mod.rotation.y = 0;
+                        mod.position.y -= 0.5;
+                        circle_tracker.position.y -= 0.5;                        
                 } else if (e.key == 'ArrowLeft') {
                     camera.position.x -= 0.5;
                     mod.rotation.y = -Math.PI / 2;
@@ -480,42 +525,11 @@ function moveMenu(loc) {
 // JS
 let speedMouse = 0;
 let speedMobile = 0;
-let lastY, currY;
 
-window.addEventListener('wheel', scroll);
 
-window.addEventListener('touchstart', (e) => {
-    lastY = e.touches[0].clientY;
-});
+document.querySelector('canvas.canvasGL').style.display = "block";
 
-window.addEventListener('touchmove', scrollMobile);
-
-function scroll(e){
-    speedMouse += e.deltaY * 0.02;
-}
-
-function scrollMobile(e){
-    currY = e.changedTouches[0].clientY;
-    if(lastY < currY){
-        // Scroll Up
-        speedMobile -= (currY-lastY) * 0.1;
-    }
-    else if(lastY > currY){
-        // Scroll Down
-        speedMobile += (lastY-currY) * 0.02;
-    }
-}
-
-function scrolling() {
-    speedMouse *= 0.08; // This avoids the event of keep scrolling non-stop
-    speedMobile *= 0.04;
-    
-    document.querySelector('canvas.canvasGL').style.display = "block";
-
-    window.requestAnimationFrame(scrolling);
-}
-
-scrolling();
+// scrolling();
 
 function gui() {
     // Debug
@@ -534,7 +548,7 @@ function gui() {
     camFolder.open()
 }
 
-
+gui();
 function allItemsLoaded() {
     $('.onepix-imgloader').fadeOut();
     // fade in content (using opacity instead of fadein() so it retains it's height.
@@ -545,3 +559,11 @@ const iframe = document.getElementById("iframe");
 // if(document.getElementById('iframe').style.display == 'block'){
 //     console.log('display block')
 // }
+
+
+
+
+
+
+
+
