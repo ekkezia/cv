@@ -548,7 +548,6 @@ function gui() {
     camFolder.open()
 }
 
-gui();
 function allItemsLoaded() {
     $('.onepix-imgloader').fadeOut();
     // fade in content (using opacity instead of fadein() so it retains it's height.
