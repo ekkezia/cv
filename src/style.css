@@ -977,15 +977,7 @@ canvas {
     }
 }
 
-@font-face {
-    font-family: "ek-reg";
-    src: url("./fonts/kezia-reg.ttf")
-}
 
-@font-face {
-    font-family: "ek-bold";
-    src: url("./fonts/ek-bold.ttf")
-}
 
 * {
     margin: 0;
