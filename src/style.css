@@ -82,6 +82,18 @@ canvas {
 }
 
 @media(min-width: 300px) {
+    #instruction {
+        position: fixed;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 0.8rem;
+        color: lightgrey;
+        text-orientation: mixed;
+        font-family: 'Courier New', Courier, monospace;
+        z-index: 15;
+        margin-top: 70%;
+        writing-mode: vertical-lr;
+    }
     .socials {
         padding-top: 4%;
     }
@@ -541,6 +553,16 @@ canvas {
 }
 
 @media (min-width: 600px) {
+    #instruction {
+        position: fixed;
+        left: 0;
+        font-size: 0.8rem;
+        color: grey;
+        text-orientation: mixed;
+        font-family: 'Courier New', Courier, monospace;
+        z-index: 15;
+        margin-top: 20%;
+    }
     .socials {
         padding-top: 1%;
     }
@@ -956,13 +978,13 @@ canvas {
 }
 
 @font-face {
-    font-family: "spacegrotesk";
-    src: url("fonts/spacegrotesk.ttf")
+    font-family: "ek-reg";
+    src: url("./fonts/kezia-reg.ttf")
 }
 
 @font-face {
-    font-family: "stretchpro";
-    src: url("fonts/StretchPro.ttf")
+    font-family: "ek-bold";
+    src: url("./fonts/ek-bold.ttf")
 }
 
 * {
@@ -1097,17 +1119,6 @@ a {
     font-family: 'Courier New', Courier, monospace;
     z-index: 15;
     margin-top: 22%;
-}
-
-.scroll-left {
-    position: fixed;
-    left: 0;
-    font-size: 0.8rem;
-    color: lightgrey;
-    text-orientation: mixed;
-    font-family: 'Courier New', Courier, monospace;
-    z-index: 15;
-    margin-top: 20%;
 }
 
 .scroll-right>p {
@@ -1467,21 +1478,6 @@ a:hover {
     margin-right: 6%;
 }
 
-.dropbtn {
-    background-color: black;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    font-family: spacegrotesk;
-}
-
-.faq-dropdown {
-    position: relative;
-    display: inline-block;
-    font-family: spacegrotesk;
-}
-
 .dropdown-content {
     display: none;
     position: relative;
@@ -1596,6 +1592,18 @@ a:hover {
     -moz-transition: all 10s ease-in;
     -ms-transition: all 10s ease-in;
     transition: all 10s ease-in;
+}
+
+#portfolio:hover>#link {
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+}
+
+#link {
+    color: black;
+    display: none;
 }
 
 .footer {
