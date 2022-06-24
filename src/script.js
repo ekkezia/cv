@@ -220,10 +220,10 @@ function character() {
     gltfLoader.load('3d/muma.glb',
         function(gltf) {
             mod = gltf.scene;
-            mod.position.z = 0;
+            mod.position.z = 1;
             mod.position.x -= 6;
             mod.position.y = 3;
-            mod.scale.set(1,1,1);
+            mod.scale.set(0.5,0.5,0.5);
             mod.rotation.x = Math.PI /2;
 
             mixer = new THREE.AnimationMixer(mod);
