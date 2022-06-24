@@ -123,7 +123,7 @@ function init() {
 
         scene.add(img);
         if(mobile){
-            img.position.x += (i * 5) - 8.5;
+            img.position.x += (i * 0.1) - 4;
             img.position.y = -1.5;
         }
     }
@@ -141,7 +141,7 @@ function init() {
 
         scene.add(img);
         if(mobile){
-            img.position.x += (i * 5) - 8.5;
+            img.position.x += (i * 0.1) - 4;
             img.position.y = -6.5;
         }
     }
@@ -548,6 +548,7 @@ function gui() {
     camFolder.open()
 }
 
+gui();
 function allItemsLoaded() {
     $('.onepix-imgloader').fadeOut();
     // fade in content (using opacity instead of fadein() so it retains it's height.
